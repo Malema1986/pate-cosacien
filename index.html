@@ -137,7 +137,8 @@
     {nom:"Foie",base:250,unite:"g"},
     {nom:"Oignon",base:300,unite:"g",cuit:true},
     {nom:"Échalotte",base:150,unite:"g",cuit:true},
-    {nom:"Ail",base:7,unite:"gousse(s)"}
+    {nom:"Ail",base:7,unite:"gousse(s)"},
+    {nom:"Persil",base:7.5,unite:"g",parKgMelange:true}
   ];
   var MELANGE_TOTAL_BASE=2700; // g
   var ASSAIS=[
@@ -146,7 +147,6 @@
     {nom:"Jaunes d'œuf",base:2,unite:""},
     {nom:"Sel",base:18,unite:"g"},
     {nom:"Poivre",base:3,unite:"g"},
-    {nom:"Persil",base:7.5,unite:"g"},
     {nom:"Herbes de Provence",base:1,unite:"g"},
     {nom:"Armagnac",base:2,unite:"cL"},
     {nom:"4 épices",base:1.5,unite:"g"}
@@ -187,7 +187,7 @@
     var lm=document.getElementById("listeMelange"); lm.innerHTML="";
     var pf=Math.min(95,Math.max(0,perte))/100;
     MELANGE.forEach(function(ing){
-      var val=ing.base*ratio;
+      var val=ing.parKgMelange?ing.base*totalKg:ing.base*ratio;
       var right;
       if(ing.cuit){
         var cuitq=val*(1-pf);
